@@ -1,25 +1,34 @@
 package com.vinicius.estoque.domain;
 
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@Entity
 public class Produto {
 
+    @Id
     private Long id;
     private String nome;
     private Integer quatidadeProduto;
     private String marca;
+    @OneToOne
     private Fornecedor fornecedor;
     private BigDecimal valorProd;
+    @ManyToOne
+    @JoinColumn(name = "venda_id",
+    referencedColumnName = "id")
+    private Estoque estoque;
 
-
-    public Produto(Long id, String nome, Integer quatidadeProduto, String marca, Fornecedor fornecedor, BigDecimal valorProd) {
+    public Produto(Long id, String nome, Integer quatidadeProduto, String marca, Fornecedor fornecedor, BigDecimal valorProd, Estoque estoque) {
         this.id = id;
         this.nome = nome;
         this.quatidadeProduto = quatidadeProduto;
         this.marca = marca;
         this.fornecedor = fornecedor;
         this.valorProd = valorProd;
+        this.estoque = estoque;
     }
 
     public Produto() {
@@ -86,4 +95,11 @@ public class Produto {
         return Objects.hash(id);
     }
 
+    public Estoque getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(Estoque estoque) {
+        this.estoque = estoque;
+    }
 }

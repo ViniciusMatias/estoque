@@ -1,8 +1,12 @@
 package com.vinicius.estoque.domain;
 
-import java.util.Objects;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+import java.util.Objects;
+@Entity
 public class Fornecedor {
+    @Id
     private Long id;
     private String nome;
 

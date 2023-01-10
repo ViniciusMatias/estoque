@@ -1,10 +1,16 @@
 package com.vinicius.estoque.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
 import java.util.List;
 import java.util.Objects;
-
+@Entity
 public class Estoque {
+    @Id
     private Long id;
+    @OneToMany(mappedBy = "estoque")
     private List<Produto> produtos;
 
     public Estoque() {

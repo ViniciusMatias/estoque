@@ -27,5 +27,15 @@ public class FornecedorController {
         Fornecedor fornecedorSalvo = fornecedorService.createFornecedor(fornecedor);
         return new ResponseEntity<>(fornecedorSalvo, HttpStatus.CREATED);
     }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
+        this.fornecedorService.deleteFornecedorById(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Fornecedor> updateFornecedor(@PathVariable Long id, @RequestBody Fornecedor novoFornecedor){
+        Fornecedor fornecedor = this.fornecedorService.updateFornecedorById(id,novoFornecedor);
+        return ResponseEntity.ok(fornecedor);
+    }
 
 }

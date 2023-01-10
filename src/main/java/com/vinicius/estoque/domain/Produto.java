@@ -9,22 +9,23 @@ import java.util.Objects;
 public class Produto {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private Integer quatidadeProduto;
+    private Integer quantidadeProduto;
     private String marca;
     @OneToOne
     private Fornecedor fornecedor;
     private BigDecimal valorProd;
     @ManyToOne
-    @JoinColumn(name = "venda_id",
+    @JoinColumn(name = "estoque_id",
     referencedColumnName = "id")
     private Estoque estoque;
 
-    public Produto(Long id, String nome, Integer quatidadeProduto, String marca, Fornecedor fornecedor, BigDecimal valorProd, Estoque estoque) {
+    public Produto(Long id, String nome, Integer quantidadeProduto, String marca, Fornecedor fornecedor, BigDecimal valorProd, Estoque estoque) {
         this.id = id;
         this.nome = nome;
-        this.quatidadeProduto = quatidadeProduto;
+        this.quantidadeProduto = quantidadeProduto;
         this.marca = marca;
         this.fornecedor = fornecedor;
         this.valorProd = valorProd;
@@ -50,12 +51,12 @@ public class Produto {
         this.nome = nome;
     }
 
-    public Integer getQuatidadeProduto() {
-        return quatidadeProduto;
+    public Integer getQuantidadeProduto() {
+        return quantidadeProduto;
     }
 
-    public void setQuatidadeProduto(Integer quatidadeProduto) {
-        this.quatidadeProduto = quatidadeProduto;
+    public void setQuantidadeProduto(Integer quantidadeProduto) {
+        this.quantidadeProduto = quantidadeProduto;
     }
 
     public String getMarca() {
